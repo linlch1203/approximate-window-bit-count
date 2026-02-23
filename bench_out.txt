@@ -1,0 +1,9 @@
+**** BENCHMARK: Bit counting over a sliding window (approximate) *****
+stream length = 1,000,000,000
+window size = 100,000,000
+k = 1,000
+last output = 99,994,113
+number of merges = 999,969,746
+duration = 158,684,946,780,000 nanoseconds
+throughput = 6,301 items/sec
+memory footprint = 1,537,536 bytes

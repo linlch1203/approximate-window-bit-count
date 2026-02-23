@@ -164,7 +164,7 @@ uint32_t wnd_bit_count_apx_next(StateApx* self, bool item) {
         
         // merge buckets
         int i = 0;
-        while (self->count[i] == self->k + 1) {
+        while (self->count[i] == self->k + 2) {
             int32_t oldest_idx = self->last_of_size[i];
             int32_t second_oldest_idx = self->buckets[oldest_idx].prev;
             
