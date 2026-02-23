@@ -6,7 +6,7 @@ The implementation is highly optimized for embedded IoT devices, featuring:
 
 - **$O(1)$ Amortized Time Complexity**: Uses optimization arrays to achieve constant-time bucket merging, processing over 50 million items per second.
 - **Strict Memory Constraints**: Calls `malloc` exactly once during initialization to pre-allocate a custom memory pool. No dynamic memory allocation occurs during stream processing.
-- **Low Memory Footprint**: Uses only ~1.5 MB of memory to track a sliding window of 100,000,000 items with a relative error bound of 0.1%.
+- **Low Memory Footprint**: Uses only ~650 KB of memory to track a sliding window of 100,000,000 items with a relative error bound of 0.1%.
 
 ## Files
 
@@ -38,7 +38,7 @@ window size = 100,000,000
 k = 1,000
 last output = 99,994,113
 number of merges = 999,969,733
-duration = 18,633,152,000 nanoseconds
-throughput = 53,667,785 items/sec
-memory footprint = 1,537,536 bytes
+duration = 18,632,166,000 nanoseconds
+throughput = 53,670,625 items/sec
+memory footprint = 649,296 bytes
 ```

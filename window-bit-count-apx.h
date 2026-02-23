@@ -51,9 +51,15 @@ uint64_t wnd_bit_count_apx_new(StateApx* self, uint32_t wnd_size, uint32_t k) {
         self->count[i] = 0;     // count of buckets of size 2^i
     }
     
-    uint64_t max_b = 64ULL * k + 64ULL;
+    // Calculate max buckets based on the asymptotic bound O(k * log(W))
+    // The maximum bucket size is bounded by wnd_size.
+    // Since sizes are powers of 2, there are at most floor(log2(wnd_size)) + 1 different sizes.
+    // For each size, we can have at most k + 1 buckets (since we merge at k + 2).
+    uint32_t max_sizes = (uint32_t)floor(log2((double)wnd_size)) + 1;
+    uint64_t max_b = (uint64_t)max_sizes * (k + 2);
+    
     if (wnd_size + 1ULL < max_b) {
-        max_b = wnd_size + 1ULL;
+        max_b = wnd_size + 1ULL; // We never need more buckets than the window size itself
     }
     self->max_buckets = (uint32_t)max_b;
     
